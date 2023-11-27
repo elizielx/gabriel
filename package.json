@@ -10,6 +10,7 @@
         "@fastify/sensible": "~5.2.0",
         "@sapphire/discord.js-utilities": "^7.1.2",
         "@sapphire/framework": "^4.8.2",
+        "@sapphire/pieces": "^3.10.0",
         "@sapphire/plugin-logger": "^3.0.7",
         "@sapphire/plugin-subcommands": "^5.1.0",
         "@sapphire/utilities": "^3.13.0",
@@ -21,7 +22,7 @@
         "fastify-plugin": "~4.5.0",
         "postgres": "^3.4.3",
         "qwik-nx": "2.0.2",
-        "superjson": "^2.2.1",
+        "superjson": "^1.12.3",
         "tslib": "^2.3.0"
     },
     "devDependencies": {

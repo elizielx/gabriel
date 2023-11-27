@@ -46,10 +46,12 @@
             },
             "configurations": {
                 "development": {
-                    "buildTarget": "gabriel-bot:build:development"
+                    "buildTarget": "gabriel-bot:build:development",
+                    "inspect": false
                 },
                 "production": {
-                    "buildTarget": "gabriel-bot:build:production"
+                    "buildTarget": "gabriel-bot:build:production",
+                    "inspect": false
                 }
             }
         },

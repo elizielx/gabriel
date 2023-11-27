@@ -13,5 +13,6 @@ export class ReadyListener extends Listener {
     public async run(client: Client) {
         const { username, id } = client.user;
         this.container.logger.info(`Successfully logged in as ${username} (${id})`);
+        this.container.logger.info(`API is ${(await this.container.trpcClient.health.health.query()).status}`);
     }
 }

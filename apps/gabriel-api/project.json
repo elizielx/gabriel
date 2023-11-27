@@ -12,6 +12,7 @@
                 "platform": "node",
                 "outputPath": "dist/apps/gabriel-api",
                 "format": ["cjs"],
+                "target": "esnext",
                 "bundle": false,
                 "main": "apps/gabriel-api/src/main.ts",
                 "tsConfig": "apps/gabriel-api/tsconfig.app.json",
@@ -39,15 +40,20 @@
         "serve": {
             "executor": "@nx/js:node",
             "defaultConfiguration": "development",
+            "dependsOn": ["build"],
             "options": {
-                "buildTarget": "gabriel-api:build"
+                "buildTarget": "gabriel-api:build",
+                "inspect": false,
+                "watch": false
             },
             "configurations": {
                 "development": {
-                    "buildTarget": "gabriel-api:build:development"
+                    "buildTarget": "gabriel-api:build:development",
+                    "inspect": false
                 },
                 "production": {
-                    "buildTarget": "gabriel-api:build:production"
+                    "buildTarget": "gabriel-api:build:production",
+                    "inspect": false
                 }
             }
         },
