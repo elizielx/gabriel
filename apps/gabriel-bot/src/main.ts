@@ -1,4 +1,5 @@
-import { GabrielClient } from "@gabriel/lib";
+import "@sapphire/plugin-logger/register";
+import { GabrielClient } from "@gabriel/shared";
 import { GatewayIntentBits } from "discord.js";
 
 const client = new GabrielClient({

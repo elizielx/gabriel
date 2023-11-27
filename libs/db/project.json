@@ -1,0 +1,31 @@
+{
+    "name": "db",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "libs/db/src",
+    "projectType": "library",
+    "targets": {
+        "lint": {
+            "executor": "@nx/eslint:lint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "lintFilePatterns": ["libs/db/**/*.ts"]
+            }
+        },
+        "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+            "options": {
+                "jestConfig": "libs/db/jest.config.ts"
+            }
+        },
+        "seed": {
+            "executor": "nx:run-commands",
+            "configurations": {
+                "seed": {
+                    "commands": ["ts-node libs/db/src/lib/seed.ts"]
+                }
+            }
+        }
+    },
+    "tags": []
+}

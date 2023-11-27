@@ -15,7 +15,8 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
-            "@gabriel/lib": ["libs/lib/src/index.ts"]
+            "@gabriel/db": ["libs/db/src/index.ts"],
+            "@gabriel/shared": ["libs/shared/src/index.ts"]
         }
     },
     "exclude": ["tmp"]
