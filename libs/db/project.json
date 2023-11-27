@@ -20,10 +20,8 @@
         },
         "seed": {
             "executor": "nx:run-commands",
-            "configurations": {
-                "seed": {
-                    "commands": ["ts-node libs/db/src/lib/seed.ts"]
-                }
+            "options": {
+                "commands": ["ts-node libs/db/src/lib/seed.ts"]
             }
         }
     },

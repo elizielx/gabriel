@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "driver": "PostgreSQL",
+            "name": "gabriel",
+            "connectString": "postgres://elizielx:elizielx@0.0.0.0:5432/gabriel"
+        }
+    ]
+}

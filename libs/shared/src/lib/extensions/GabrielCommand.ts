@@ -2,7 +2,7 @@ import { Subcommand, SubcommandOptions } from "@sapphire/plugin-subcommands";
 import { ChatInputCommand } from "@sapphire/framework";
 
 export abstract class GabrielCommand extends Subcommand {
-    protected constructor(context: Subcommand.Context, options: SubcommandOptions) {
+    protected constructor(context: Subcommand.LoaderContext, options: SubcommandOptions) {
         super(context, {
             ...options,
         });
@@ -21,7 +21,7 @@ export abstract class GabrielCommand extends Subcommand {
 export declare namespace GabrielCommand {
     type Options = SubcommandOptions;
     type JSON = Subcommand.JSON;
-    type Context = Subcommand.Context;
+    type Context = Subcommand.LoaderContext;
     type RunInTypes = Subcommand.RunInTypes;
     type ChatInputCommandInteraction = Subcommand.ChatInputCommandInteraction;
     type ContextMenuCommandInteraction = Subcommand.ContextMenuCommandInteraction;
