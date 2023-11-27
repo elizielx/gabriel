@@ -46,9 +46,6 @@ jobs:
             - name: Install dependencies
               run: pnpm install
 
-            - name: Check out the default branch
-              run: git branch --track master origin/master
-
             - name: Initialize the Nx Cloud distributed CI run and stop agents when the build tasks are done
               run: pnpm exec nx-cloud start-ci-run --stop-agents-after=build
 
