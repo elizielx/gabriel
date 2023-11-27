@@ -16,6 +16,7 @@ jobs:
         name: Nx Cloud - Main Job
         uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.14.0
         with:
+            pnpm-version: 18
             main-branch-name: master
             number-of-agents: 3
             init-commands: |
