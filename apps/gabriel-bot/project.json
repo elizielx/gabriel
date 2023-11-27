@@ -1,75 +1,76 @@
 {
-  "name": "gabriel-bot",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/gabriel-bot/src",
-  "projectType": "application",
-  "targets": {
-    "build": {
-      "executor": "@nx/esbuild:esbuild",
-      "outputs": ["{options.outputPath}"],
-      "defaultConfiguration": "production",
-      "options": {
-        "platform": "node",
-        "outputPath": "dist/apps/gabriel-bot",
-        "format": ["cjs"],
-        "bundle": false,
-        "main": "apps/gabriel-bot/src/main.ts",
-        "tsConfig": "apps/gabriel-bot/tsconfig.app.json",
-        "assets": ["apps/gabriel-bot/src/assets"],
-        "generatePackageJson": true,
-        "esbuildOptions": {
-          "sourcemap": true,
-          "outExtension": {
-            ".js": ".js"
-          }
-        }
-      },
-      "configurations": {
-        "development": {},
-        "production": {
-          "generateLockfile": true,
-          "esbuildOptions": {
-            "sourcemap": false,
-            "outExtension": {
-              ".js": ".js"
+    "name": "gabriel-bot",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "apps/gabriel-bot/src",
+    "projectType": "application",
+    "targets": {
+        "build": {
+            "executor": "@nx/esbuild:esbuild",
+            "outputs": ["{options.outputPath}"],
+            "defaultConfiguration": "production",
+            "options": {
+                "platform": "node",
+                "outputPath": "dist/apps/gabriel-bot",
+                "format": ["cjs"],
+                "bundle": false,
+                "main": "apps/gabriel-bot/src/main.ts",
+                "tsConfig": "apps/gabriel-bot/tsconfig.app.json",
+                "assets": ["apps/gabriel-bot/src/assets"],
+                "generatePackageJson": true,
+                "esbuildOptions": {
+                    "sourcemap": true,
+                    "outExtension": {
+                        ".js": ".js"
+                    }
+                }
+            },
+            "configurations": {
+                "development": {},
+                "production": {
+                    "generateLockfile": true,
+                    "esbuildOptions": {
+                        "sourcemap": false,
+                        "outExtension": {
+                            ".js": ".js"
+                        }
+                    }
+                }
             }
-          }
-        }
-      }
-    },
-    "serve": {
-      "executor": "@nx/js:node",
-      "defaultConfiguration": "development",
-      "options": {
-        "buildTarget": "gabriel-bot:build"
-      },
-      "configurations": {
-        "development": {
-          "buildTarget": "gabriel-bot:build:development"
         },
-        "production": {
-          "buildTarget": "gabriel-bot:build:production"
+        "serve": {
+            "executor": "@nx/js:node",
+            "defaultConfiguration": "development",
+            "options": {
+                "buildTarget": "gabriel-bot:build",
+                "inspect": false
+            },
+            "configurations": {
+                "development": {
+                    "buildTarget": "gabriel-bot:build:development"
+                },
+                "production": {
+                    "buildTarget": "gabriel-bot:build:production"
+                }
+            }
+        },
+        "lint": {
+            "executor": "@nx/eslint:lint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "lintFilePatterns": ["apps/gabriel-bot/**/*.ts"]
+            }
+        },
+        "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+            "options": {
+                "jestConfig": "apps/gabriel-bot/jest.config.ts"
+            }
+        },
+        "docker-build": {
+            "dependsOn": ["build"],
+            "command": "docker build -f apps/gabriel-bot/Dockerfile . -t gabriel-bot"
         }
-      }
     },
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["apps/gabriel-bot/**/*.ts"]
-      }
-    },
-    "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
-      "options": {
-        "jestConfig": "apps/gabriel-bot/jest.config.ts"
-      }
-    },
-    "docker-build": {
-      "dependsOn": ["build"],
-      "command": "docker build -f apps/gabriel-bot/Dockerfile . -t gabriel-bot"
-    }
-  },
-  "tags": []
+    "tags": []
 }
