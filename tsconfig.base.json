@@ -16,7 +16,8 @@
         "baseUrl": ".",
         "paths": {
             "@gabriel/db": ["libs/db/src/index.ts"],
-            "@gabriel/shared": ["libs/shared/src/index.ts"]
+            "@gabriel/shared": ["libs/shared/src/index.ts"],
+            "@gabriel/trpc": ["libs/trpc/src/index.ts"]
         }
     },
     "exclude": ["tmp"]

@@ -1,0 +1,70 @@
+{
+    "name": "gabriel-api",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "apps/gabriel-api/src",
+    "projectType": "application",
+    "targets": {
+        "build": {
+            "executor": "@nx/esbuild:esbuild",
+            "outputs": ["{options.outputPath}"],
+            "defaultConfiguration": "production",
+            "options": {
+                "platform": "node",
+                "outputPath": "dist/apps/gabriel-api",
+                "format": ["cjs"],
+                "bundle": false,
+                "main": "apps/gabriel-api/src/main.ts",
+                "tsConfig": "apps/gabriel-api/tsconfig.app.json",
+                "assets": ["apps/gabriel-api/src/assets"],
+                "generatePackageJson": true,
+                "esbuildOptions": {
+                    "sourcemap": true,
+                    "outExtension": {
+                        ".js": ".js"
+                    }
+                }
+            },
+            "configurations": {
+                "development": {},
+                "production": {
+                    "esbuildOptions": {
+                        "sourcemap": false,
+                        "outExtension": {
+                            ".js": ".js"
+                        }
+                    }
+                }
+            }
+        },
+        "serve": {
+            "executor": "@nx/js:node",
+            "defaultConfiguration": "development",
+            "options": {
+                "buildTarget": "gabriel-api:build"
+            },
+            "configurations": {
+                "development": {
+                    "buildTarget": "gabriel-api:build:development"
+                },
+                "production": {
+                    "buildTarget": "gabriel-api:build:production"
+                }
+            }
+        },
+        "lint": {
+            "executor": "@nx/eslint:lint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "lintFilePatterns": ["apps/gabriel-api/**/*.ts"]
+            }
+        },
+        "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+            "options": {
+                "jestConfig": "apps/gabriel-api/jest.config.ts"
+            }
+        }
+    },
+    "tags": []
+}

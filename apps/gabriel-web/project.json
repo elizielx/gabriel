@@ -54,7 +54,8 @@
             "options": {
                 "buildTarget": "gabriel-web:build.client",
                 "mode": "ssr",
-                "port": 5173
+                "port": 5173,
+                "proxyConfig": "apps/gabriel-web/proxy.conf.json"
             }
         },
         "serve.debug": {
