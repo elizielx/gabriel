@@ -5,16 +5,17 @@ import { Form, routeLoader$ } from "@builder.io/qwik-city";
 import { client } from "@gabriel/trpc-client";
 
 export const useHealth = routeLoader$(async (requestEvent) => {
-    const health = (await client.health.health.query()).status;
-    if (!health) {
+    try {
+        const health = (await client.health.health.query()).status;
+
+        return {
+            health: health.toUpperCase(),
+        };
+    } catch (error) {
         return requestEvent.fail(500, {
             errorMessage: "NOT OK",
         });
     }
-
-    return {
-        health,
-    };
 });
 
 export default component$(() => {
