@@ -7,7 +7,7 @@
         "build": {
             "executor": "qwik-nx:build",
             "options": {
-                "runSequence": ["gabriel-web:build.client", "gabriel-web:build.ssr"],
+                "runSequence": ["gabriel-web:build.client", "gabriel-web:build.server"],
                 "outputPath": "dist/apps/gabriel-web"
             },
             "configurations": {
@@ -34,6 +34,13 @@
                 }
             }
         },
+        "build.server": {
+            "executor": "@nx/vite:build",
+            "options": {
+                "outputPath": "dist/apps/gabriel-web",
+                "configFile": "apps/gabriel-web/src/adapters/fastify/vite.config.ts"
+            }
+        },
         "preview": {
             "executor": "@nx/vite:preview-server",
             "options": {
@@ -49,12 +56,14 @@
                 "reportsDirectory": "../../coverage/apps/gabriel-web"
             }
         },
+
         "serve": {
-            "executor": "@nx/vite:dev-server",
+            "executor": "nx:run-commands",
+            "dependsOn": ["build"],
+
             "options": {
-                "buildTarget": "gabriel-web:build.client",
-                "mode": "ssr",
-                "port": 5173
+                "commands": ["node dist/apps/gabriel-web/server/entry.fastify"],
+                "envFile": ".env.local"
             }
         },
         "serve.debug": {
