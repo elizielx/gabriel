@@ -7,10 +7,16 @@ export default component$(() => {
     const session = useAuthSession();
 
     return (
-        <div class="container">
-            <h1>Hello, world</h1>
+        <div class="ml-4 mt-4">
+            <h1 class="text-2xl">Hello, world</h1>
             <br />
-            {session.value?.user === undefined ? <Login /> : <a href="/dashboard">Dashboard</a>}
+            {session.value?.user === undefined ? (
+                <Login />
+            ) : (
+                <a class="border-2 border-black p-2" href="/dashboard">
+                    Dashboard
+                </a>
+            )}
         </div>
     );
 });

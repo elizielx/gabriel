@@ -66,6 +66,14 @@
                 "envFile": ".env.local"
             }
         },
+        "serve.dev": {
+            "executor": "@nx/vite:dev-server",
+            "options": {
+                "buildTarget": "gabriel-web:build.client",
+                "mode": "ssr",
+                "port": 3000
+            }
+        },
         "serve.debug": {
             "executor": "nx:run-commands",
             "options": {

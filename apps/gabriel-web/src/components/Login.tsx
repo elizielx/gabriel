@@ -5,6 +5,7 @@ export default component$(() => {
     const signIn = useAuthSignin();
     return (
         <button
+            class="border-2 border-black p-2"
             onClick$={() =>
                 signIn.submit({
                     providerId: "discord",

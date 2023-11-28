@@ -24,8 +24,8 @@ export default component$(() => {
 
     return (
         <>
-            <div class="container">
-                <h1>Dashboard</h1>
+            <div class="ml-4 mt-4">
+                <h1 class="text-2xl">Dashboard</h1>
                 <br />
                 <p>Welcome, {session.value?.user?.name}</p>
                 <br />
@@ -33,7 +33,7 @@ export default component$(() => {
                 <br />
                 <Form action={signOut}>
                     <input type="hidden" name="callbackUrl" value="/" />
-                    <button>Sign Out</button>
+                    <button class="border-2 border-black p-2">Sign Out</button>
                 </Form>
             </div>
         </>
