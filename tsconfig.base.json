@@ -18,8 +18,7 @@
             "@gabriel/db": ["libs/db/src/index.ts"],
             "@gabriel/shared": ["libs/shared/src/index.ts"],
             "@gabriel/trpc": ["libs/trpc/src/index.ts"]
-        },
-        "typeRoots": ["node_modules/@types", "types"]
+        }
     },
-    "exclude": ["tmp"]
+    "exclude": ["tmp", "node_modules"]
 }

@@ -6,6 +6,7 @@
     "private": true,
     "packageManager": "pnpm@8.10.0",
     "dependencies": {
+        "@builder.io/qwik-labs": "github:BuilderIo/qwik-labs-build#main",
         "@fastify/autoload": "~5.7.1",
         "@fastify/sensible": "~5.2.0",
         "@sapphire/discord.js-utilities": "^7.1.2",
