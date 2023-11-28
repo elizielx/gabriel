@@ -21,8 +21,8 @@ export default defineConfig({
         tsconfigPaths({ root: "../../" }),
     ],
     server: {
+        proxy: { "/trpc": { target: "http://localhost:3001" } },
         fs: {
-            // Allow serving files from the project root
             allow: ["../../"],
         },
     },
@@ -40,6 +40,6 @@ export default defineConfig({
         include: ["src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
     },
     optimizeDeps: {
-        include: ["@auth/core"],
+        include: ["@auth/core", "@trpc/client"],
     },
 });
