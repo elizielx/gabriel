@@ -2,7 +2,7 @@ import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import { useAuthSession, useAuthSignout } from "../plugin@auth";
 import { Form, routeLoader$ } from "@builder.io/qwik-city";
-import { client } from "../../trpc-client";
+import { client } from "@gabriel/trpc-client";
 
 export const useHealth = routeLoader$(async (requestEvent) => {
     const health = (await client.health.health.query()).status;
