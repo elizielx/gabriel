@@ -4,7 +4,12 @@
         "module": "commonjs",
         "outDir": "../../dist/out-tsc",
         "declaration": true,
-        "types": ["node"]
+        "esModuleInterop": true,
+        "types": ["node"],
+        // ! FIXME: This is a temporary workaround.
+        "paths": {
+            "@gabriel/db": ["dist/libs/db"]
+        }
     },
     "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"],
     "include": ["src/**/*.ts"]

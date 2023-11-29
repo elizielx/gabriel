@@ -28,6 +28,9 @@ export class RegisterCommand extends GabrielCommand {
     public async chatInputRun(interaction: GabrielCommand.ChatInputCommandInteraction): Promise<Message> {
         await interaction.deferReply({ ephemeral: true });
 
+        const testUser = await this.container.trpcClient.user.findUser.query(interaction.user.id);
+        console.log(testUser);
+
         const user = await db.select().from(usersTable).where(eq(usersTable.discordId, interaction.user.id));
         if (user.length === 0) {
             await db.insert(usersTable).values({

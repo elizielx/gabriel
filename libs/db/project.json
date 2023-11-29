@@ -4,6 +4,16 @@
     "sourceRoot": "libs/db/src",
     "projectType": "library",
     "targets": {
+        "build": {
+            "executor": "@nx/js:tsc",
+            "outputs": ["{options.outputPath}"],
+            "options": {
+                "outputPath": "dist/libs/db",
+                "main": "libs/db/src/index.ts",
+                "tsConfig": "libs/db/tsconfig.lib.json",
+                "assets": ["libs/db/*.md"]
+            }
+        },
         "lint": {
             "executor": "@nx/eslint:lint",
             "outputs": ["{options.outputFile}"],
@@ -25,5 +35,5 @@
             }
         }
     },
-    "tags": []
+    "tags": ["scope:db"]
 }
