@@ -33,6 +33,12 @@
             "options": {
                 "commands": ["ts-node libs/db/src/lib/seed.ts"]
             }
+        },
+        "migrate": {
+            "executor": "nx:run-commands",
+            "options": {
+                "commands": ["pnpm exec drizzle-kit generate:pg"]
+            }
         }
     },
     "tags": ["scope:db"]

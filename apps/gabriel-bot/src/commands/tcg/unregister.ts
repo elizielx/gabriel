@@ -1,4 +1,3 @@
-import { db, usersTable } from "@gabriel/db";
 import { Constants, GabrielCommand } from "@gabriel/shared";
 import { RegisterBehavior } from "@sapphire/framework";
 import {
@@ -10,7 +9,6 @@ import {
     SlashCommandBuilder,
     bold,
 } from "discord.js";
-import { eq } from "drizzle-orm";
 import { UnregisterConfirmStatus } from "../../interaction-handlers/unregister-confirm";
 
 export class RegisterCommand extends GabrielCommand {
@@ -52,8 +50,9 @@ export class RegisterCommand extends GabrielCommand {
                 .setStyle(ButtonStyle.Danger)
         );
 
-        const user = await db.select().from(usersTable).where(eq(usersTable.discordId, interaction.user.id));
-        if (user.length === 0) {
+        const user = await this.container.trpcClient.user.findUser.query(interaction.user.id);
+
+        if (!user) {
             return interaction.editReply("You are not registered.");
         }
 

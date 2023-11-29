@@ -1,8 +1,6 @@
-import { db, usersTable } from "@gabriel/db";
 import { Constants } from "@gabriel/shared";
 import { InteractionHandler, InteractionHandlerTypes } from "@sapphire/framework";
 import { ButtonInteraction, EmbedBuilder } from "discord.js";
-import { eq } from "drizzle-orm";
 
 export enum UnregisterConfirmStatus {
     CONFIRMED = "confirmed",
@@ -48,7 +46,7 @@ export class UnregisterConfirmHandler extends InteractionHandler {
             });
         }
 
-        await db.delete(usersTable).where(eq(usersTable.discordId, parsedData?.userId));
+        await this.container.trpcClient.user.deleteUser.query(parsedData?.userId);
 
         return interaction.editReply({
             embeds: [new EmbedBuilder().setDescription("You have successfully deleted your account.")],

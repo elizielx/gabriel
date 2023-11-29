@@ -1,8 +1,6 @@
-import { db, usersTable } from "@gabriel/db";
 import { GabrielCommand } from "@gabriel/shared";
 import { RegisterBehavior } from "@sapphire/framework";
 import { Message, SlashCommandBuilder } from "discord.js";
-import { eq } from "drizzle-orm";
 
 export class RegisterCommand extends GabrielCommand {
     public constructor(context: GabrielCommand.Context, options: GabrielCommand.Options) {
@@ -28,14 +26,16 @@ export class RegisterCommand extends GabrielCommand {
     public async chatInputRun(interaction: GabrielCommand.ChatInputCommandInteraction): Promise<Message> {
         await interaction.deferReply({ ephemeral: true });
 
-        const testUser = await this.container.trpcClient.user.findUser.query(interaction.user.id);
-        console.log(testUser);
+        const user = await this.container.trpcClient.user.findUser.query(interaction.user.id);
 
-        const user = await db.select().from(usersTable).where(eq(usersTable.discordId, interaction.user.id));
-        if (user.length === 0) {
-            await db.insert(usersTable).values({
+        if (!user) {
+            const createdUser = await this.container.trpcClient.user.createUser.query({
                 discordId: interaction.user.id,
             });
+
+            if (!createdUser) {
+                return interaction.editReply("There was an error while registering your account.");
+            }
 
             return interaction.editReply("You have successfully registered your account.");
         }
