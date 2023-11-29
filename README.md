@@ -1,6 +1,6 @@
 ## Gabriel
 
-A not-so-working experimental Trading Card Game on a Discord bot and a website. With the bot using Discord.js and Sapphire, and the website using Qwik on a Nx monorepo with Postgres and Drizzle.
+A not-so-working experimental Trading Card Game on a Discord bot and a website.
 
 ### About
 
