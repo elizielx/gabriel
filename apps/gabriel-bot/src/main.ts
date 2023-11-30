@@ -3,8 +3,6 @@ import { GabrielClient } from "@gabriel/shared";
 import { client as trpcClient } from "@gabriel/trpc-client";
 import { GatewayIntentBits } from "discord.js";
 
-console.log(process.env.DISCORD_TOKEN);
-
 const client = new GabrielClient({
     overrideApplicationCommandsRegistries: true,
     intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages],
