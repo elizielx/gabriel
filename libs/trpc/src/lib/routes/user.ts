@@ -4,7 +4,7 @@ import { eq } from "drizzle-orm";
 import { db, usersTable } from "@gabriel/db";
 
 export const userRouter = router({
-    findUser: procedure.input(z.string()).query(async (opts) => {
+    findOne: procedure.input(z.string()).query(async (opts) => {
         const discordId = opts.input;
 
         const user = await db.select().from(usersTable).where(eq(usersTable.discordId, discordId));
@@ -14,7 +14,7 @@ export const userRouter = router({
 
         return user[0];
     }),
-    createUser: procedure.input(z.object({ discordId: z.string() })).query(async (opts) => {
+    create: procedure.input(z.object({ discordId: z.string() })).mutation(async (opts) => {
         const { discordId } = opts.input;
 
         const user = await db
@@ -25,7 +25,7 @@ export const userRouter = router({
             .returning();
         return user[0];
     }),
-    deleteUser: procedure.input(z.string()).query(async (opts) => {
+    delete: procedure.input(z.string()).mutation(async (opts) => {
         const discordId = opts.input;
 
         const user = await db.delete(usersTable).where(eq(usersTable.discordId, discordId)).returning();

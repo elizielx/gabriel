@@ -46,7 +46,7 @@ export class UnregisterConfirmHandler extends InteractionHandler {
             });
         }
 
-        await this.container.trpcClient.user.deleteUser.query(parsedData?.userId);
+        await this.container.trpcClient.user.delete.mutate(parsedData?.userId);
 
         return interaction.editReply({
             embeds: [new EmbedBuilder().setDescription("You have successfully deleted your account.")],
