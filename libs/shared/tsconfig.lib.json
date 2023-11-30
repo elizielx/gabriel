@@ -4,7 +4,11 @@
         "module": "commonjs",
         "outDir": "../../dist/out-tsc",
         "declaration": true,
-        "types": ["node"]
+        "types": ["node"],
+        "paths": {
+            "@gabriel/db": ["dist/libs/db"],
+            "@gabriel/trpc": ["dist/libs/trpc"]
+        }
     },
     "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"],
     "include": ["src/**/*.ts", "src/**/*.d.ts"]
