@@ -37,6 +37,14 @@ export class RegisterCommand extends GabrielCommand {
                 return interaction.editReply("There was an error while registering your account.");
             }
 
+            const createdEconomy = await this.container.trpcClient.economy.create.mutate({
+                discordId: interaction.user.id,
+            });
+
+            if (!createdEconomy) {
+                return interaction.editReply("There was an error while registering your account.");
+            }
+
             return interaction.editReply("You have successfully registered your account.");
         }
 
