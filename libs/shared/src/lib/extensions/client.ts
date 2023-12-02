@@ -11,13 +11,13 @@ import { ClientOptions } from "discord.js";
 
 declare module "@sapphire/pieces" {
     interface Container {
-        trpcClient: CreateTRPCProxyClient<AppRouter>;
+        api: CreateTRPCProxyClient<AppRouter>;
     }
 }
 
 export interface GabrielClientOptions extends SapphireClientOptions, ClientOptions {
     overrideApplicationCommandsRegistries?: boolean;
-    trpcClient: CreateTRPCProxyClient<AppRouter>;
+    api: CreateTRPCProxyClient<AppRouter>;
 }
 
 export class GabrielClient extends SapphireClient {
@@ -28,6 +28,6 @@ export class GabrielClient extends SapphireClient {
             ApplicationCommandRegistries.setDefaultBehaviorWhenNotIdentical(RegisterBehavior.BulkOverwrite);
         }
 
-        container.trpcClient = options.trpcClient;
+        container.api = options.api;
     }
 }

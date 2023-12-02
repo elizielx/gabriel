@@ -8,6 +8,7 @@ const client = new GabrielClient({
     intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages],
     baseUserDirectory: __dirname,
     loadMessageCommandListeners: true,
-    trpcClient: trpcClient,
+    api: trpcClient,
 });
+
 client.login(process.env.NODE_ENV === "production" ? process.env.DISCORD_TOKEN : process.env.CANARY_DISCORD_TOKEN);

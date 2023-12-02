@@ -51,12 +51,6 @@ export class RegisterCommand extends GabrielCommand {
                 .setStyle(ButtonStyle.Danger)
         );
 
-        const user = await this.container.trpcClient.user.findOne.query(interaction.user.id);
-
-        if (!user) {
-            return interaction.editReply("You are not registered.");
-        }
-
         return interaction.editReply({
             embeds: [
                 new EmbedBuilder().setDescription(

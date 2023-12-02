@@ -1,15 +1,18 @@
-import { integer, pgTable, serial, timestamp, varchar } from "drizzle-orm/pg-core";
+import { integer, pgTable, timestamp, varchar, uuid } from "drizzle-orm/pg-core";
 
 export const usersTable = pgTable("users", {
-    id: serial("id").primaryKey(),
-    discordId: varchar("discord_id").unique(),
+    id: uuid("id").primaryKey().defaultRandom(),
+    discordId: varchar("discord_id").unique().notNull(),
     createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
 export const usersRewardsTable = pgTable("users_rewards", {
-    id: serial("id").primaryKey(),
-    userId: integer("user_id")
-        .references(() => usersTable.id)
+    id: uuid("id").primaryKey().defaultRandom(),
+    userId: uuid("user_id")
+        .references(() => usersTable.id, {
+            onDelete: "cascade",
+            onUpdate: "cascade",
+        })
         .unique(),
     hourly: timestamp("hourly", { precision: 6, withTimezone: true }),
     daily: timestamp("daily", { precision: 6, withTimezone: true }),
@@ -17,18 +20,24 @@ export const usersRewardsTable = pgTable("users_rewards", {
 });
 
 export const usersEconomyTable = pgTable("users_economy", {
-    id: serial("id").primaryKey(),
-    userId: integer("user_id")
-        .references(() => usersTable.id)
+    id: uuid("id").primaryKey().defaultRandom(),
+    userId: uuid("user_id")
+        .references(() => usersTable.id, {
+            onDelete: "cascade",
+            onUpdate: "cascade",
+        })
         .unique(),
     crystals: integer("crystals").default(0),
     fates: integer("fates").default(0),
 });
 
 export const usersProgressionTable = pgTable("users_progression", {
-    id: serial("id").primaryKey(),
-    userId: integer("user_id")
-        .references(() => usersTable.id)
+    id: uuid("id").primaryKey().defaultRandom(),
+    userId: uuid("user_id")
+        .references(() => usersTable.id, {
+            onDelete: "cascade",
+            onUpdate: "cascade",
+        })
         .unique(),
     level: integer("level").default(1),
     xp: integer("xp").default(0),

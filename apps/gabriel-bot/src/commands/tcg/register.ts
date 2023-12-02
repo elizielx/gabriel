@@ -26,30 +26,16 @@ export class RegisterCommand extends GabrielCommand {
     public async chatInputRun(interaction: GabrielCommand.ChatInputCommandInteraction): Promise<Message> {
         await interaction.deferReply({ ephemeral: true });
 
-        const user = await this.container.trpcClient.user.findOne.query(interaction.user.id);
+        try {
+            await this.container.api.user.create.mutate({ discordId: interaction.user.id });
 
-        if (!user) {
-            const createdUser = await this.container.trpcClient.user.create.mutate({
-                discordId: interaction.user.id,
+            return interaction.editReply({
+                content: `You have been registered!`,
             });
-
-            if (!createdUser) {
-                return interaction.editReply("There was an error while registering your account.");
-            }
-
-            await this.container.trpcClient.economy.create.mutate({
-                discordId: interaction.user.id,
+        } catch (error) {
+            return interaction.editReply({
+                content: `Seems like there was an error fetching or creating your account. Please contact a developer for assistance.`,
             });
-            await this.container.trpcClient.progression.create.mutate({
-                discordId: interaction.user.id,
-            });
-            await this.container.trpcClient.rewards.create.mutate({
-                discordId: interaction.user.id,
-            });
-
-            return interaction.editReply("You have successfully registered your account.");
         }
-
-        return interaction.editReply("You are already registered.");
     }
 }

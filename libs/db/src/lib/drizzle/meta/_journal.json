@@ -5,22 +5,8 @@
         {
             "idx": 0,
             "version": "5",
-            "when": 1701108954769,
-            "tag": "0000_lying_shriek",
-            "breakpoints": true
-        },
-        {
-            "idx": 1,
-            "version": "5",
-            "when": 1701300841095,
-            "tag": "0001_black_spitfire",
-            "breakpoints": true
-        },
-        {
-            "idx": 2,
-            "version": "5",
-            "when": 1701533899581,
-            "tag": "0002_fair_nightmare",
+            "when": 1701544541150,
+            "tag": "0000_yellow_blob",
             "breakpoints": true
         }
     ]

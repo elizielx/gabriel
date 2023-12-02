@@ -11,7 +11,9 @@ export class RegisteredUserOnlyPrecondition extends Precondition {
     }
 
     public async chatInputRun(interaction: CommandInteraction) {
-        const user = await this.container.trpcClient.user.findOne.query(interaction.user.id);
+        const user = await this.container.api.user.findOne.query({
+            discordId: interaction.user.id,
+        });
         return user
             ? this.ok()
             : this.error({ message: "You are not registered.", identifier: GabrielIdentifiers.RegisteredUserOnly });

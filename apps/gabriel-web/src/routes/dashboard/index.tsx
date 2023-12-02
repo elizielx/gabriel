@@ -6,10 +6,16 @@ import { client } from "@gabriel/trpc-client";
 
 export const useHealth = routeLoader$(async (requestEvent) => {
     try {
-        const health = (await client.health.health.query()).status;
+        const health = (await client.health.query()).status;
+
+        if (!health) {
+            return requestEvent.fail(500, {
+                errorMessage: health,
+            });
+        }
 
         return {
-            health: health.toUpperCase(),
+            health: "ok",
         };
     } catch (error) {
         return requestEvent.fail(500, {
