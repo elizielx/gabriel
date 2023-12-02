@@ -6,6 +6,7 @@
 ![Discord](https://img.shields.io/badge/Discord%20Bot-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white)
 ![Fastify](https://img.shields.io/badge/fastify-%23000000.svg?style=for-the-badge&logo=fastify&logoColor=white)
 ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Felizielx%2Fgabriel.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Felizielx%2Fgabriel?ref=badge_shield)
 
 A not-so-working experimental Trading Card Game on a Discord bot and a website.
 
@@ -18,3 +19,6 @@ Refer to [CONTRIBUTING.md](.github/CONTRIBUTING.md) for more information about r
 ### License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Felizielx%2Fgabriel.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Felizielx%2Fgabriel?ref=badge_large)
