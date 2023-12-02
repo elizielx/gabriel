@@ -4,6 +4,8 @@ import { z } from "zod";
 import { eq } from "drizzle-orm";
 import { router, procedure } from "../../server";
 import { userEconomyRouter } from "./economy";
+import { userProgressionRouter } from "./progression";
+import { userRewardsRouter } from "./rewards";
 
 export const userRouter = router({
     findOne: procedure
@@ -72,4 +74,6 @@ export const userRouter = router({
     }),
 
     economy: userEconomyRouter,
+    rewards: userRewardsRouter,
+    progression: userProgressionRouter,
 });
