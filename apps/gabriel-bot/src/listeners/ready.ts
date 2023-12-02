@@ -1,6 +1,8 @@
-import { GabrielEvents } from "@gabriel/shared";
-import { Listener } from "@sapphire/framework";
 import { Client } from "discord.js";
+
+import { GabrielEvents } from "@gabriel/shared";
+
+import { Listener } from "@sapphire/framework";
 
 export class ReadyListener extends Listener {
     public constructor(context: Listener.LoaderContext, options: Listener.Options) {

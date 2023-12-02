@@ -1,12 +1,13 @@
-import { GabrielCommand } from "@gabriel/shared";
-import { RegisterBehavior } from "@sapphire/framework";
+import dayjs, { ManipulateType, OpUnitType, QUnitType } from "dayjs";
+import duration from "dayjs/plugin/duration";
+import timezone from "dayjs/plugin/timezone";
+import utc from "dayjs/plugin/utc";
 import { InteractionResponse, SlashCommandBuilder } from "discord.js";
 
-// TODO: Move this somewhere else more appropriately.
-import dayjs, { ManipulateType, OpUnitType, QUnitType } from "dayjs";
-import utc from "dayjs/plugin/utc";
-import timezone from "dayjs/plugin/timezone";
-import duration from "dayjs/plugin/duration";
+import { GabrielCommand } from "@gabriel/shared";
+
+import { RegisterBehavior } from "@sapphire/framework";
+
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.extend(duration);

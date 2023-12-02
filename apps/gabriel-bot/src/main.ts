@@ -1,7 +1,9 @@
-import "@sapphire/plugin-logger/register";
+import { GatewayIntentBits } from "discord.js";
+
 import { GabrielClient } from "@gabriel/shared";
 import { client as trpcClient } from "@gabriel/trpc-client";
-import { GatewayIntentBits } from "discord.js";
+
+import "@sapphire/plugin-logger/register";
 
 const client = new GabrielClient({
     overrideApplicationCommandsRegistries: true,

@@ -1,6 +1,8 @@
-import { Constants } from "@gabriel/shared";
-import { InteractionHandler, InteractionHandlerTypes } from "@sapphire/framework";
 import { ButtonInteraction, EmbedBuilder } from "discord.js";
+
+import { Constants } from "@gabriel/shared";
+
+import { InteractionHandler, InteractionHandlerTypes } from "@sapphire/framework";
 
 export enum UnregisterConfirmStatus {
     CONFIRMED = "confirmed",

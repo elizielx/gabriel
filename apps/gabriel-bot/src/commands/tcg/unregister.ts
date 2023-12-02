@@ -54,7 +54,7 @@ export class RegisterCommand extends GabrielCommand {
         return interaction.editReply({
             embeds: [
                 new EmbedBuilder().setDescription(
-                    `Are you sure you want to proceed with deleting your account and associated data? This action is irreversible, and all your information will be permanently removed from our system.\n\nPlease Note:\n- You will lose access to your account.\n- Any saved preferences, history, and personalized settings will be lost.\n- Your data cannot be recovered once deleted.\n\nIf you're certain about this decision, please click ${bold(
+                    `Are you sure you want to proceed with deleting your account and associated data? This action is irreversible, and all your information will be permanently removed from our system.\n\nPlease Note:\n- You will lose access to your Gabriel account.\n- Any saved preferences, history, and personalized settings on Gabriel will be lost.\n- Your data cannot be recovered once deleted.\n\nIf you're certain about this decision, please click ${bold(
                         "Confirm"
                     )} below. If you have any concerns or would like assistance, contact our support team.`
                 ),
