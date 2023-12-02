@@ -17,7 +17,7 @@ export class RegisterCommand extends GabrielCommand {
             ...options,
             name: "unregister",
             description: "Unregister your account from Gabriel and deletes all your data.",
-            preconditions: ["RegistedUserOnly"],
+            preconditions: ["RegisteredUserOnly"],
         });
     }
 

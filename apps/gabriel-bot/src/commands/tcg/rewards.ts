@@ -8,7 +8,7 @@ export class RewardsCommand extends GabrielCommand {
             ...options,
             name: "rewards",
             description: "See your available rewards and claim them.",
-            preconditions: ["RegistedUserOnly"],
+            preconditions: ["RegisteredUserOnly"],
         });
     }
 

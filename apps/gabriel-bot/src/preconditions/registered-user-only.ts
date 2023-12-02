@@ -2,7 +2,7 @@ import { GabrielIdentifiers } from "@gabriel/shared";
 import { Precondition } from "@sapphire/framework";
 import { CommandInteraction } from "discord.js";
 
-export class RegistedUserOnlyPrecondition extends Precondition {
+export class RegisteredUserOnlyPrecondition extends Precondition {
     public constructor(context: Precondition.LoaderContext, options: Precondition.Options) {
         super(context, {
             ...options,
@@ -20,6 +20,6 @@ export class RegistedUserOnlyPrecondition extends Precondition {
 
 declare module "@sapphire/framework" {
     interface Preconditions {
-        RegistedUserOnly: never;
+        RegisteredUserOnly: never;
     }
 }
