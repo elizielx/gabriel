@@ -26,7 +26,7 @@ git clone https://github.com/elizielx/gabriel.git
 ### Running the Project
 
 -   Start the database using `docker-compose up -d` or a local PostgreSQL server.
--   Migrate the database using `pnpm exec drizzle-kit generate:pg` or `pnpm nx migrate db`.
+-   Migrate the database using `pnpm exec drizzle-kit generate:pg` or `pnpm exec nx migrate db`.
 -   You can run one of the following commands to start the project:
     -   `pnpm exec nx serve gabriel-bot` - Run the Discord bot.
     -   `pnpm exec nx serve gabriel-web` - Run the website/dashboard.

@@ -3,6 +3,9 @@
     "version": "0.0.0",
     "license": "MIT",
     "scripts": {
+        "start:api": "nx serve gabriel-api",
+        "start:web": "nx serve gabriel-web",
+        "start:bot": "nx serve gabriel-bot",
         "prepare": "husky install .github/husky"
     },
     "private": true,

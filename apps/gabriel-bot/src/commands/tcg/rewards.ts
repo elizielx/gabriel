@@ -9,13 +9,35 @@ export class RewardsCommand extends GabrielCommand {
             name: "rewards",
             description: "See your available rewards and claim them.",
             preconditions: ["RegisteredUserOnly"],
+            subcommands: [
+                {
+                    name: "cooldown",
+                    chatInputRun: "chatInputCooldownRun",
+                },
+                {
+                    name: "hourly",
+                    chatInputRun: "chatInputHourlyRun",
+                },
+                {
+                    name: "daily",
+                    chatInputRun: "chatInputDailyRun",
+                },
+                {
+                    name: "weekly",
+                    chatInputRun: "chatInputWeeklyRun",
+                },
+            ],
         });
     }
 
     public override registerApplicationCommands(registry: GabrielCommand.Registry) {
-        const command: SlashCommandBuilder = new SlashCommandBuilder()
+        const command = new SlashCommandBuilder()
             .setName(this.name)
-            .setDescription(this.description);
+            .setDescription(this.description)
+            .addSubcommand((command) => command.setName("cooldown").setDescription("View your reward cooldowns."))
+            .addSubcommand((command) => command.setName("hourly").setDescription("Claim your hourly reward."))
+            .addSubcommand((command) => command.setName("daily").setDescription("Claim your daily reward."))
+            .addSubcommand((command) => command.setName("weekly").setDescription("Claim your weekly reward."));
 
         registry.registerChatInputCommand(command, {
             behaviorWhenNotIdentical: RegisterBehavior.Overwrite,
@@ -24,7 +46,27 @@ export class RewardsCommand extends GabrielCommand {
         });
     }
 
-    public async chatInputRun(interaction: GabrielCommand.ChatInputCommandInteraction): Promise<InteractionResponse> {
+    public async chatInputCooldownRun(
+        interaction: GabrielCommand.ChatInputCommandInteraction
+    ): Promise<InteractionResponse> {
+        return interaction.reply("No commands are available yet.");
+    }
+
+    public async chatInputHourlyRun(
+        interaction: GabrielCommand.ChatInputCommandInteraction
+    ): Promise<InteractionResponse> {
+        return interaction.reply("No commands are available yet.");
+    }
+
+    public async chatInputDailyRun(
+        interaction: GabrielCommand.ChatInputCommandInteraction
+    ): Promise<InteractionResponse> {
+        return interaction.reply("No commands are available yet.");
+    }
+
+    public async chatInputWeeklyRun(
+        interaction: GabrielCommand.ChatInputCommandInteraction
+    ): Promise<InteractionResponse> {
         return interaction.reply("No commands are available yet.");
     }
 }
