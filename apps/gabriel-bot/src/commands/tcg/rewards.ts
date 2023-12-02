@@ -1,6 +1,6 @@
 import { GabrielCommand } from "@gabriel/shared";
 import { RegisterBehavior } from "@sapphire/framework";
-import { InteractionResponse, SlashCommandBuilder } from "discord.js";
+import { InteractionResponse, Message, SlashCommandBuilder } from "discord.js";
 
 export class RewardsCommand extends GabrielCommand {
     public constructor(context: GabrielCommand.Context, options: GabrielCommand.Options) {
@@ -46,10 +46,10 @@ export class RewardsCommand extends GabrielCommand {
         });
     }
 
-    public async chatInputCooldownRun(
-        interaction: GabrielCommand.ChatInputCommandInteraction
-    ): Promise<InteractionResponse> {
-        return interaction.reply("No commands are available yet.");
+    public async chatInputCooldownRun(interaction: GabrielCommand.ChatInputCommandInteraction): Promise<Message> {
+        await interaction.deferReply();
+
+        return interaction.editReply("No commands are available yet.");
     }
 
     public async chatInputHourlyRun(

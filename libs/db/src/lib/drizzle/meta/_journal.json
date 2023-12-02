@@ -15,6 +15,13 @@
             "when": 1701300841095,
             "tag": "0001_black_spitfire",
             "breakpoints": true
+        },
+        {
+            "idx": 2,
+            "version": "5",
+            "when": 1701533899581,
+            "tag": "0002_fair_nightmare",
+            "breakpoints": true
         }
     ]
 }

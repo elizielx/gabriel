@@ -6,6 +6,16 @@ export const usersTable = pgTable("users", {
     createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
+export const usersRewardsTable = pgTable("users_rewards", {
+    id: serial("id").primaryKey(),
+    userId: integer("user_id")
+        .references(() => usersTable.id)
+        .unique(),
+    hourly: timestamp("hourly", { precision: 6, withTimezone: true }),
+    daily: timestamp("daily", { precision: 6, withTimezone: true }),
+    weekly: timestamp("weekly", { precision: 6, withTimezone: true }),
+});
+
 export const usersEconomyTable = pgTable("users_economy", {
     id: serial("id").primaryKey(),
     userId: integer("user_id")
