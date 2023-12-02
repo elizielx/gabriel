@@ -1,0 +1,214 @@
+{
+    "id": "c6f9846f-b517-4fbe-80db-318cee00d412",
+    "prevId": "bda30d2f-0e5b-4393-9823-76e60a3f65ab",
+    "version": "5",
+    "dialect": "pg",
+    "tables": {
+        "users_economy": {
+            "name": "users_economy",
+            "schema": "",
+            "columns": {
+                "id": {
+                    "name": "id",
+                    "type": "uuid",
+                    "primaryKey": true,
+                    "notNull": true,
+                    "default": "gen_random_uuid()"
+                },
+                "discord_id": {
+                    "name": "discord_id",
+                    "type": "varchar",
+                    "primaryKey": false,
+                    "notNull": false
+                },
+                "crystals": {
+                    "name": "crystals",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "default": 0
+                },
+                "fates": {
+                    "name": "fates",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "default": 0
+                }
+            },
+            "indexes": {},
+            "foreignKeys": {
+                "users_economy_discord_id_users_discord_id_fk": {
+                    "name": "users_economy_discord_id_users_discord_id_fk",
+                    "tableFrom": "users_economy",
+                    "tableTo": "users",
+                    "columnsFrom": ["discord_id"],
+                    "columnsTo": ["discord_id"],
+                    "onDelete": "cascade",
+                    "onUpdate": "cascade"
+                }
+            },
+            "compositePrimaryKeys": {},
+            "uniqueConstraints": {
+                "users_economy_discord_id_unique": {
+                    "name": "users_economy_discord_id_unique",
+                    "nullsNotDistinct": false,
+                    "columns": ["discord_id"]
+                }
+            }
+        },
+        "users_progression": {
+            "name": "users_progression",
+            "schema": "",
+            "columns": {
+                "id": {
+                    "name": "id",
+                    "type": "uuid",
+                    "primaryKey": true,
+                    "notNull": true,
+                    "default": "gen_random_uuid()"
+                },
+                "discord_id": {
+                    "name": "discord_id",
+                    "type": "varchar",
+                    "primaryKey": false,
+                    "notNull": false
+                },
+                "level": {
+                    "name": "level",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "default": 1
+                },
+                "xp": {
+                    "name": "xp",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "default": 0
+                }
+            },
+            "indexes": {},
+            "foreignKeys": {
+                "users_progression_discord_id_users_discord_id_fk": {
+                    "name": "users_progression_discord_id_users_discord_id_fk",
+                    "tableFrom": "users_progression",
+                    "tableTo": "users",
+                    "columnsFrom": ["discord_id"],
+                    "columnsTo": ["discord_id"],
+                    "onDelete": "cascade",
+                    "onUpdate": "cascade"
+                }
+            },
+            "compositePrimaryKeys": {},
+            "uniqueConstraints": {
+                "users_progression_discord_id_unique": {
+                    "name": "users_progression_discord_id_unique",
+                    "nullsNotDistinct": false,
+                    "columns": ["discord_id"]
+                }
+            }
+        },
+        "users_rewards": {
+            "name": "users_rewards",
+            "schema": "",
+            "columns": {
+                "id": {
+                    "name": "id",
+                    "type": "uuid",
+                    "primaryKey": true,
+                    "notNull": true,
+                    "default": "gen_random_uuid()"
+                },
+                "discord_id": {
+                    "name": "discord_id",
+                    "type": "varchar",
+                    "primaryKey": false,
+                    "notNull": false
+                },
+                "hourly": {
+                    "name": "hourly",
+                    "type": "timestamp (6) with time zone",
+                    "primaryKey": false,
+                    "notNull": false
+                },
+                "daily": {
+                    "name": "daily",
+                    "type": "timestamp (6) with time zone",
+                    "primaryKey": false,
+                    "notNull": false
+                },
+                "weekly": {
+                    "name": "weekly",
+                    "type": "timestamp (6) with time zone",
+                    "primaryKey": false,
+                    "notNull": false
+                }
+            },
+            "indexes": {},
+            "foreignKeys": {
+                "users_rewards_discord_id_users_discord_id_fk": {
+                    "name": "users_rewards_discord_id_users_discord_id_fk",
+                    "tableFrom": "users_rewards",
+                    "tableTo": "users",
+                    "columnsFrom": ["discord_id"],
+                    "columnsTo": ["discord_id"],
+                    "onDelete": "cascade",
+                    "onUpdate": "cascade"
+                }
+            },
+            "compositePrimaryKeys": {},
+            "uniqueConstraints": {
+                "users_rewards_discord_id_unique": {
+                    "name": "users_rewards_discord_id_unique",
+                    "nullsNotDistinct": false,
+                    "columns": ["discord_id"]
+                }
+            }
+        },
+        "users": {
+            "name": "users",
+            "schema": "",
+            "columns": {
+                "id": {
+                    "name": "id",
+                    "type": "uuid",
+                    "primaryKey": true,
+                    "notNull": true,
+                    "default": "gen_random_uuid()"
+                },
+                "discord_id": {
+                    "name": "discord_id",
+                    "type": "varchar",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "created_at": {
+                    "name": "created_at",
+                    "type": "timestamp",
+                    "primaryKey": false,
+                    "notNull": true,
+                    "default": "now()"
+                }
+            },
+            "indexes": {},
+            "foreignKeys": {},
+            "compositePrimaryKeys": {},
+            "uniqueConstraints": {
+                "users_discord_id_unique": {
+                    "name": "users_discord_id_unique",
+                    "nullsNotDistinct": false,
+                    "columns": ["discord_id"]
+                }
+            }
+        }
+    },
+    "enums": {},
+    "schemas": {},
+    "_meta": {
+        "schemas": {},
+        "tables": {},
+        "columns": {}
+    }
+}

@@ -37,21 +37,18 @@ export const userRouter = router({
                 });
             }
 
-            const user = await tx
-                .insert(usersTable)
-                .values({
-                    discordId: discordId,
-                })
-                .returning();
+            await tx.insert(usersTable).values({
+                discordId: discordId,
+            });
 
             await tx.insert(usersEconomyTable).values({
-                userId: user[0].id,
+                discordId: discordId,
             });
             await tx.insert(usersProgressionTable).values({
-                userId: user[0].id,
+                discordId: discordId,
             });
             await tx.insert(usersRewardsTable).values({
-                userId: user[0].id,
+                discordId: discordId,
             });
         });
 

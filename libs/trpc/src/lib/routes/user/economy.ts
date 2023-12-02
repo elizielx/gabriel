@@ -14,7 +14,7 @@ export const userEconomyRouter = router({
         .query(async (opts) => {
             const { discordId } = opts.input;
 
-            const query = await db.select().from(usersEconomyTable).where(eq(usersEconomyTable.userId, discordId));
+            const query = await db.select().from(usersEconomyTable).where(eq(usersEconomyTable.discordId, discordId));
             if (query.length === 0) {
                 throw new TRPCError({
                     code: "BAD_REQUEST",

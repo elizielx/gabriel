@@ -14,7 +14,7 @@ export const userRewardsRouter = router({
         .query(async (opts) => {
             const { discordId } = opts.input;
 
-            const query = await db.select().from(usersRewardsTable).where(eq(usersRewardsTable.userId, discordId));
+            const query = await db.select().from(usersRewardsTable).where(eq(usersRewardsTable.discordId, discordId));
             if (query.length === 0) {
                 throw new TRPCError({
                     code: "BAD_REQUEST",

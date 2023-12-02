@@ -17,7 +17,7 @@ export const userProgressionRouter = router({
             const query = await db
                 .select()
                 .from(usersProgressionTable)
-                .where(eq(usersProgressionTable.userId, discordId));
+                .where(eq(usersProgressionTable.discordId, discordId));
             if (query.length === 0) {
                 throw new TRPCError({
                     code: "BAD_REQUEST",

@@ -8,8 +8,8 @@ export const usersTable = pgTable("users", {
 
 export const usersRewardsTable = pgTable("users_rewards", {
     id: uuid("id").primaryKey().defaultRandom(),
-    userId: uuid("user_id")
-        .references(() => usersTable.id, {
+    discordId: varchar("discord_id")
+        .references(() => usersTable.discordId, {
             onDelete: "cascade",
             onUpdate: "cascade",
         })
@@ -21,8 +21,8 @@ export const usersRewardsTable = pgTable("users_rewards", {
 
 export const usersEconomyTable = pgTable("users_economy", {
     id: uuid("id").primaryKey().defaultRandom(),
-    userId: uuid("user_id")
-        .references(() => usersTable.id, {
+    discordId: varchar("discord_id")
+        .references(() => usersTable.discordId, {
             onDelete: "cascade",
             onUpdate: "cascade",
         })
@@ -33,8 +33,8 @@ export const usersEconomyTable = pgTable("users_economy", {
 
 export const usersProgressionTable = pgTable("users_progression", {
     id: uuid("id").primaryKey().defaultRandom(),
-    userId: uuid("user_id")
-        .references(() => usersTable.id, {
+    discordId: varchar("discord_id")
+        .references(() => usersTable.discordId, {
             onDelete: "cascade",
             onUpdate: "cascade",
         })
