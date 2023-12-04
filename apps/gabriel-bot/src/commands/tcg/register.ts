@@ -1,8 +1,7 @@
+import { RegisterBehavior } from "@sapphire/framework";
 import { Message, SlashCommandBuilder } from "discord.js";
 
 import { GabrielCommand } from "@gabriel/shared";
-
-import { RegisterBehavior } from "@sapphire/framework";
 
 export class RegisterCommand extends GabrielCommand {
     public constructor(context: GabrielCommand.Context, options: GabrielCommand.Options) {

@@ -1,8 +1,10 @@
 import { TRPCError } from "@trpc/server";
-import { db, usersEconomyTable } from "@gabriel/db";
-import { z } from "zod";
 import { eq } from "drizzle-orm";
-import { router, procedure } from "../../server";
+import { z } from "zod";
+
+import { db, usersEconomyTable } from "@gabriel/db";
+
+import { procedure, router } from "../../server";
 
 export const userEconomyRouter = router({
     findOne: procedure
@@ -25,4 +27,28 @@ export const userEconomyRouter = router({
 
             return query[0];
         }),
+    updateCrystal: procedure.input(z.object({ discordId: z.string(), amount: z.number() })).mutation(async (opts) => {
+        const { discordId, amount } = opts.input;
+
+        await db.transaction(async (tx) => {
+            const query = await tx.select().from(usersEconomyTable).where(eq(usersEconomyTable.discordId, discordId));
+            if (query.length === 0) {
+                throw new TRPCError({
+                    code: "BAD_REQUEST",
+                    message: "User not found.",
+                    cause: query,
+                });
+            }
+
+            const user = query[0];
+            await tx
+                .update(usersEconomyTable)
+                .set({
+                    crystals: amount + (user.crystals ?? 0),
+                })
+                .where(eq(usersEconomyTable.discordId, discordId));
+
+            return { success: true };
+        });
+    }),
 });

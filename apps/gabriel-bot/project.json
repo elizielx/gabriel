@@ -8,6 +8,7 @@
             "executor": "@nx/esbuild:esbuild",
             "outputs": ["{options.outputPath}"],
             "defaultConfiguration": "production",
+            "dependsOn": ["shared:build", "trpc:build"],
             "options": {
                 "platform": "node",
                 "outputPath": "dist/apps/gabriel-bot",
@@ -28,6 +29,7 @@
                 "development": {},
                 "production": {
                     "generateLockfile": true,
+
                     "esbuildOptions": {
                         "sourcemap": false,
                         "outExtension": {
@@ -40,6 +42,7 @@
         "serve": {
             "executor": "@nx/js:node",
             "defaultConfiguration": "development",
+            "dependsOn": ["build"],
             "options": {
                 "buildTarget": "gabriel-bot:build",
                 "inspect": false

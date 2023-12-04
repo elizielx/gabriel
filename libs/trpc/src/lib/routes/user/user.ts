@@ -1,8 +1,10 @@
 import { TRPCError } from "@trpc/server";
-import { db, usersEconomyTable, usersProgressionTable, usersRewardsTable, usersTable } from "@gabriel/db";
-import { z } from "zod";
 import { eq } from "drizzle-orm";
-import { router, procedure } from "../../server";
+import { z } from "zod";
+
+import { db, usersEconomyTable, usersProgressionTable, usersRewardsTable, usersTable } from "@gabriel/db";
+
+import { procedure, router } from "../../server";
 import { userEconomyRouter } from "./economy";
 import { userProgressionRouter } from "./progression";
 import { userRewardsRouter } from "./rewards";
