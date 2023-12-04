@@ -71,6 +71,10 @@
             "options": {
                 "jestConfig": "apps/gabriel-api/jest.config.ts"
             }
+        },
+        "docker-build": {
+            "dependsOn": ["build"],
+            "command": "docker build -f apps/gabriel-api/Dockerfile . -t gabriel-api"
         }
     },
     "tags": []
